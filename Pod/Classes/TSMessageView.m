@@ -225,7 +225,7 @@ canBeDismissedByUser:(BOOL)dismissingEnabled
             }
             case TSMessageNotificationTypeMessageCenter:
             {
-                currentString = @"message";
+                currentString = @"messageCenter";
                 _centerTitle = YES;
                 break;
             }

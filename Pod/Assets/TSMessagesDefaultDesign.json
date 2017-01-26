@@ -39,6 +39,26 @@
         "backgroundColor": "#D4DDDF",
         "backgroundAlpha": 1.0
     },
+    "messageCenter": {
+        "backgroundImageName": "NotificationBackgroundMessage.png",
+        "borderColor": "#727C83",
+        "borderHeight": 1,
+        "buttonBackgroundImageName": "NotificationButtonBackground.png",
+        "buttonTitleTextColor": "#727C83",
+        "buttonTitleShadowColor": "#EBEEF1",
+        "buttonTitleShadowOffsetX": 0,
+        "buttonTitleShadowOffsetY": 1,
+        "contentFontSize": 12,
+        "contentTextColor": "#727C83",
+        "imageName": "",
+        "shadowColor": "#EBEEF1",
+        "shadowOffsetX": 0,
+        "shadowOffsetY": 1,
+        "textColor": "#727C83",
+        "titleFontSize": 14,
+        "backgroundColor": "#D4DDDF",
+        "backgroundAlpha": 0.8
+    },
     "warning": {
         "backgroundImageName": "NotificationBackgroundWarning.png",
         "borderColor": "#A28918",
