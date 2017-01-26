@@ -35,6 +35,9 @@ static NSMutableDictionary *_notificationDesign;
 /** The view controller this message is displayed in */
 @property (nonatomic, strong) UIViewController *viewController;
 
+/** Shall center title */
+@property (nonatomic, assign) BOOL centerTitle;
+
 
 /** Internal properties needed to resize the view on device rotation properly */
 @property (nonatomic, strong) UILabel *titleLabel;
@@ -212,11 +215,18 @@ canBeDismissedByUser:(BOOL)dismissingEnabled
         NSDictionary *current;
         NSString *currentString;
         notificationType = aNotificationType;
+        _centerTitle = NO;
         switch (notificationType)
         {
             case TSMessageNotificationTypeMessage:
             {
                 currentString = @"message";
+                break;
+            }
+            case TSMessageNotificationTypeMessageCenter:
+            {
+                currentString = @"message";
+                _centerTitle = YES;
                 break;
             }
             case TSMessageNotificationTypeError:
@@ -240,7 +250,6 @@ canBeDismissedByUser:(BOOL)dismissingEnabled
         }
 
         current = [notificationDesign valueForKey:currentString];
-
 
         if (!image && [[current valueForKey:@"imageName"] length])
         {
@@ -455,11 +464,20 @@ canBeDismissedByUser:(BOOL)dismissingEnabled
     CGFloat screenWidth = self.viewController.view.bounds.size.width;
     CGFloat padding = [self padding];
 
+    if (_centerTitle == YES) {
+        [self.titleLabel setTextAlignment:(NSTextAlignmentCenter)];
+    } else {
+        [self.titleLabel setTextAlignment:(NSTextAlignmentNatural)];
+    }
+
     self.titleLabel.frame = CGRectMake(self.textSpaceLeft,
                                        padding,
                                        screenWidth - padding - self.textSpaceLeft - self.textSpaceRight,
                                        0.0);
+    CGRect frame = self.titleLabel.frame;
     [self.titleLabel sizeToFit];
+    frame.size.height = self.titleLabel.frame.size.height;
+    self.titleLabel.frame = frame;
 
     if ([self.subtitle length])
     {
