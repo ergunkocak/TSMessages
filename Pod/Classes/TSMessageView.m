@@ -346,6 +346,7 @@ canBeDismissedByUser:(BOOL)dismissingEnabled
                                                   padding,
                                                   image.size.width,
                                                   image.size.height);
+            [self.iconImageView setAccessibilityIdentifier:@"notificationMessage"];
             [self addSubview:self.iconImageView];
         }
 
@@ -396,6 +397,8 @@ canBeDismissedByUser:(BOOL)dismissingEnabled
                                            0.0,
                                            self.button.frame.size.width,
                                            31.0);
+
+            [self.button setAccessibilityIdentifier:@"notificationButtonClose"];
 
             [self addSubview:self.button];
 
